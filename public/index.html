@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Western Blacksmith - 1900s Tycoon Sim</title>
+    <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body>
+    <header>
+        <h1>Western Blacksmith</h1>
+        <div id="game-time">Day 1, 8:00 AM</div>
+        <div id="money">Cash: $100.00</div>
+    </header>
+
+    <main>
+        <div class="game-container">
+            <!-- Materials Inventory Section -->
+            <section id="materials-inventory" class="game-section">
+                <h2>Materials</h2>
+                <div class="section-content">
+                    <table id="materials-table">
+                        <thead>
+                            <tr>
+                                <th>Material</th>
+                                <th>Amount</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Materials will be populated here -->
+                        </tbody>
+                    </table>
+                    <button id="buy-materials-btn">Buy Materials</button>
+                </div>
+            </section>
+
+            <!-- Forge Status Section -->
+            <section id="forge-status" class="game-section">
+                <h2>Forge</h2>
+                <div class="section-content">
+                    <div class="stat-container">
+                        <label for="coal-level">Coal Level:</label>
+                        <div class="progress-container">
+                            <div id="coal-bar" class="progress-bar"></div>
+                        </div>
+                        <span id="coal-percentage">100%</span>
+                    </div>
+                    <button id="refill-coal-btn">Refill Coal</button>
+                </div>
+            </section>
+
+            <!-- Tools Section -->
+            <section id="tools-section" class="game-section">
+                <h2>Tools</h2>
+                <div class="section-content">
+                    <table id="tools-table">
+                        <thead>
+                            <tr>
+                                <th>Tool</th>
+                                <th>Durability</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Tools will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Crafting Queue Section -->
+            <section id="crafting-queue" class="game-section">
+                <h2>Crafting</h2>
+                <div class="section-content">
+                    <div id="current-recipe">
+                        <h3>Select Item to Craft</h3>
+                        <select id="recipe-select">
+                            <!-- Recipes will be populated here -->
+                        </select>
+                        <button id="craft-btn">Start Crafting</button>
+                    </div>
+                    <div id="crafting-progress">
+                        <h3>Current Job</h3>
+                        <div id="crafting-job">No active crafting job</div>
+                        <div class="progress-container">
+                            <div id="crafting-bar" class="progress-bar"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Storefront Section -->
+            <section id="storefront" class="game-section">
+                <h2>Storefront</h2>
+                <div class="section-content">
+                    <table id="storefront-table">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Storefront items will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Contracts Section -->
+            <section id="contracts" class="game-section">
+                <h2>Contracts</h2>
+                <div class="section-content">
+                    <div id="available-contracts">
+                        <!-- Contracts will be populated here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Employees Section -->
+            <section id="employees" class="game-section">
+                <h2>Employees</h2>
+                <div class="section-content">
+                    <table id="employees-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Skill</th>
+                                <th>Fatigue</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Employees will be populated here -->
+                        </tbody>
+                    </table>
+                    <button id="hire-employee-btn">Hire Employee</button>
+                </div>
+            </section>
+
+            <!-- Blueprints Section -->
+            <section id="blueprints" class="game-section">
+                <h2>Blueprints</h2>
+                <div class="section-content">
+                    <div id="available-blueprints">
+                        <!-- Blueprints will be populated here -->
+                    </div>
+                    <button id="buy-blueprint-btn">Buy New Blueprint</button>
+                </div>
+            </section>
+        </div>
+
+        <!-- Notifications Log -->
+        <aside id="notifications-log">
+            <h2>Notifications</h2>
+            <div id="notifications-container">
+                <!-- Notifications will be populated here -->
+            </div>
+        </aside>
+    </main>
+
+    <!-- Modal for popups -->
+    <div id="modal-container" class="hidden">
+        <div id="modal-content">
+            <span id="modal-close">&times;</span>
+            <div id="modal-body">
+                <!-- Modal content will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html>
