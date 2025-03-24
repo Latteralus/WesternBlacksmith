@@ -13,7 +13,7 @@ export class BlueprintSystem {
         this.unlockedBlueprints = new Set();
         
         // Initially unlock all items marked as unlocked
-        for (const [itemId, itemData] of Object.entries(this.itemsData.items)) {
+        for (const [itemId, itemData] of Object.entries(this.itemsData)) {
             if (itemData.unlocked) {
                 this.unlockedBlueprints.add(itemId);
             }
@@ -54,7 +54,7 @@ export class BlueprintSystem {
         }
         
         // Check if item exists
-        if (!this.itemsData.items[itemId]) {
+        if (!this.itemsData[itemId]) {
             console.error(`Attempted to unlock non-existent item: ${itemId}`);
             return false;
         }
@@ -63,10 +63,10 @@ export class BlueprintSystem {
         this.unlockedBlueprints.add(itemId);
         
         // Update the item data
-        this.itemsData.items[itemId].unlocked = true;
+        this.itemsData[itemId].unlocked = true;
         
         // Emit event
-        this.eventEmitter.emit('blueprint:unlocked', itemId, this.itemsData.items[itemId]);
+        this.eventEmitter.emit('blueprint:unlocked', itemId, this.itemsData[itemId]);
         
         return true;
     }
@@ -84,7 +84,7 @@ export class BlueprintSystem {
         }
         
         // Get item data
-        const itemData = this.itemsData.items[itemId];
+        const itemData = this.itemsData[itemId];
         
         if (!itemData) {
             this.eventEmitter.emit('notification:error', "Invalid blueprint.");
@@ -140,7 +140,7 @@ export class BlueprintSystem {
     getAvailableBlueprints() {
         const availableBlueprints = [];
         
-        for (const [itemId, itemData] of Object.entries(this.itemsData.items)) {
+        for (const [itemId, itemData] of Object.entries(this.itemsData)) {
             // Skip if already unlocked
             if (this.unlockedBlueprints.has(itemId)) {
                 continue;
@@ -172,7 +172,7 @@ export class BlueprintSystem {
         const unlocked = [];
         
         for (const itemId of this.unlockedBlueprints) {
-            const itemData = this.itemsData.items[itemId];
+            const itemData = this.itemsData[itemId];
             
             if (itemData) {
                 unlocked.push({
@@ -194,7 +194,7 @@ export class BlueprintSystem {
      * @returns {Object|null} - Blueprint details or null if not found
      */
     getBlueprintDetails(itemId) {
-        const itemData = this.itemsData.items[itemId];
+        const itemData = this.itemsData[itemId];
         
         if (!itemData) {
             return null;
@@ -236,7 +236,7 @@ export class BlueprintSystem {
             this.unlockedBlueprints = new Set(data.unlockedBlueprints);
             
             // Update the item data to match
-            for (const [itemId, itemData] of Object.entries(this.itemsData.items)) {
+            for (const [itemId, itemData] of Object.entries(this.itemsData)) {
                 itemData.unlocked = this.unlockedBlueprints.has(itemId);
             }
         }
